@@ -10,12 +10,12 @@ import datetime as dt
 import schedule
 
 
-#Initialized tuple to hold the status
-
+#Reading the url.csv
 df= pd.read_csv("urls.csv")
 
 #Function to check the status is 200/OK and Error is also captured by update the url with 000
 def check_website_status(site):
+    #Initialized tuple to hold the status
     WebsiteStatus= namedtuple('WebsiteStatus', ['status', 'reason'])
     try:
         response= requests.head(site, timeout=5)
@@ -72,7 +72,7 @@ def generate_csv():
     consolidate_csv() 
 
 #Schedule the process for 10 minutes
-schedule.every(10).minutes.do(generate_csv) 
+schedule.every(1).minutes.do(generate_csv) 
 
 
 while True:
