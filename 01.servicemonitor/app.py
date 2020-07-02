@@ -38,14 +38,15 @@ def consolidate_csv():
     i=0
     for root, dirs,files in os.walk('./csv/'):  
         for fname in files:
-            path = os.path.join(root, fname)
-            st = os.stat(path)    
-            mtime = dt.datetime.fromtimestamp(st.st_mtime)
-            if mtime > ago:
+            if os.path.splitext(fname)[-1] == '.csv':
+                path = os.path.join(root, fname)
+                st = os.stat(path)    
+                mtime = dt.datetime.fromtimestamp(st.st_mtime)
+                if mtime > ago:
                 
-                print('%s modified %s'%(path, mtime))
-                listsortedcsv.insert(i,path)
-                i=i+1
+                    print('%s modified %s'%(path, mtime))
+                    listsortedcsv.insert(i,path)
+                    i=i+1
                 #df_from_each_file = (pd.read_csv(path) for f)
                 #concatenated_df   = pd.concat(df_from_each_file, ignore_index=True)
                # concatenated_df.to_html('myTable.htm',index=False)
