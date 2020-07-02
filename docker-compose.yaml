@@ -1,0 +1,17 @@
+version: '3'
+services:
+    servicemonitor:
+        build:
+            dockerfile: Dockerfile
+            context: ./01.servicemonitor
+        volumes:
+            - ./01.servicemonitor:/app
+    nginx:
+        restart: always
+        build:
+          dockerfile: Dockerfile
+          context: ./01.servicemonitor/staticfiles
+        volumes:
+            - ./01.servicemonitor/staticfiles/:/usr/share/nginx/html
+        ports:
+          - '80:80'
