@@ -29,6 +29,21 @@ def check_website_status(site):
     website_status= WebsiteStatus (status,reason)
     return website_status
 
+def ApplyGenericCSS (InputFile, CSSFile):
+    with open(CSSFile,'r') as f:
+        newlines = []
+        for line in f.readlines():
+            newlines.append(line)
+        f.close()
+    with open(InputFile,'r') as f:
+        for line in f.readlines():
+            newlines.append(line.replace('class="dataframe"','class="blueTable"'))
+        f.close()
+
+    with open(InputFile, 'w') as f:
+        for line in newlines:
+            f.write(line)
+
 #Consolidate csv generated in 10 minutes occurances and generate html
 def consolidate_csv():
        # csvfiles=glob.glob('./csv/*.csv')
@@ -53,8 +68,10 @@ def consolidate_csv():
     combined_csv= combined_csv.sort_values(by=['Timestamp'],ascending=False)
     #export to csv
     #combined_csv.to_csv( "combined_csv.csv", index=False, encoding='utf-8-sig')
-    combined_csv.to_html('./staticfiles/index.html',index=False)
-    htmlTable = df.to_html()
+    combined_csv.to_html('./staticfiles/index.html',index=False,justify='center')
+    ApplyGenericCSS('./staticfiles/index.html','./staticfiles/table.css')
+
+    #htmlTable = df.to_html()
 
 #Iterating through the dataframes and publish it to a csv
 def generate_csv():
