@@ -1,7 +1,0 @@
-Name,URL,Status Code,Status Reason,Timestamp
-google, https://www.google.com,200.0,OK,2020-07-03 10:59 AM
-gmail, https://www.googlesasaad.com,0.0,ConnectionError,2020-07-03 10:59 AM
-Bank of America,https://www.bankofamerica.com,0.0,ConnectionError,2020-07-03 10:59 AM
-UBS,https://www.ubs.com/sg/en.html,200.0,OK,2020-07-03 10:59 AM
-Julius Baer,https://www.juliusbaer.com/sg/,200.0,OK,2020-07-03 10:59 AM
-credit suisse, https://www.credit-suisse.com/sg/en.html,200.0,OK,2020-07-03 10:59 AM
