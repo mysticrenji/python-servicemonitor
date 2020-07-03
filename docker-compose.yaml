@@ -1,17 +1,13 @@
 version: '3'
 services:
     servicemonitor:
-        build:
-            dockerfile: Dockerfile
-            context: ./01.servicemonitor
+        image: mysticrenji/servicemonitor
         volumes:
             - ./01.servicemonitor:/app
     nginx:
         restart: always
-        build:
-          dockerfile: Dockerfile
-          context: ./01.servicemonitor/staticfiles
+        image: mysticrenji/servicemonitor-nginx
         volumes:
             - ./01.servicemonitor/staticfiles/:/usr/share/nginx/html
         ports:
-          - '9000:80'
+          - '80:80'
