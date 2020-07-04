@@ -86,6 +86,7 @@ def generate_csv():
     consolidate_csv() 
 
 #Schedule the process for 10 minutes without exiting
+generate_csv()
 schedule.every(10).minutes.do(generate_csv) 
 
 
